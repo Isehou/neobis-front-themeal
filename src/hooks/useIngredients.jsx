@@ -5,14 +5,12 @@ export function useIngredients(meals) {
     const result = {};
     for (const product of meals) {
       result[product.idMeal] = Object.keys(product)
-        .filter(
-          (key) =>
-            key.includes("strIngredient") &&
-            // || (key.includes("strMeasure")
-            Boolean(product[key])
-        )
+        .filter((key) => key.includes("strIngredient") && Boolean(product[key]))
 
-        .map((key) => product[key]);
+        .map((key, i) => {
+          const measure = product[`strMeasure${i + 1}`];
+          return { title: product[key], measure };
+        });
     }
     return result;
   }, [meals]);

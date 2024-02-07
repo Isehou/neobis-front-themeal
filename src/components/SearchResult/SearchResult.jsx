@@ -3,7 +3,8 @@ import React from "react";
 function SearchResult({ list }) {
   return (
     <div className="search__item-wrapper">
-      {list.map((elem, index) => {
+      <pre>{JSON.stringify(list, null, 2)}</pre>
+      {/* {list.map((elem) => {
         <div>
           <div className="search__item-img-container">
             <img
@@ -19,7 +20,7 @@ function SearchResult({ list }) {
             </p>
           </div>
         </div>;
-      })}
+      })} */}
     </div>
   );
 }

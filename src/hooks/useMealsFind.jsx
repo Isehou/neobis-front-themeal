@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { SEARCH_MEAL } from "../services/dataService";
 
-function useMealsFind(meals, filter) {
-  const [list, setList] = useState(meals);
+function useMealsFind() {
+  const [list, setList] = useState([]);
 
-  useEffect(() => {
-    setList(
-      meals.filter(
-        (e) =>
-          typeof e.title === "string" &&
-          e.title.toLowerCase().includes(filter.toLowerCase())
-      )
-    );
-  }, [meals, filter]);
+  const fetchData = (searchTerm) => {
+    axios
+      .get(SEARCH_MEAL, {
+        params: { s: searchTerm },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.data.meals) setList(res.data.meals);
+      });
+  };
 
-  return { list };
+  const find = (searchTerm) => {
+    fetchData(searchTerm);
+  };
+
+  return { list, find };
 }
 
 export default useMealsFind;

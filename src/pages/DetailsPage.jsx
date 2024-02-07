@@ -32,9 +32,8 @@ function DetailsPage() {
               </span>
               <ul className="ingredients">
                 {ingredients[elem.idMeal].map((ingredient, index) => (
-                  <li key={ingredient + index}>
-                    {ingredient}
-                    <p>{}</p>
+                  <li key={ingredient.title + index}>
+                    {ingredient.title} <strong>{ingredient.measure}</strong>
                   </li>
                 ))}
               </ul>

@@ -1,29 +1,16 @@
 import "./page-setting.css";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+import React, { useState } from "react";
 import useMealsFind from "../hooks/useMealsFind";
 import SearchResult from "../components/SearchResult/SearchResult";
-import { fetchSearchByName } from "../store/slices/searchByNameSlice";
 
 function SearchPage() {
-  const dispatch = useDispatch();
-  const { meals } = useSelector((state) => state.searchByName);
-  const [searchTerm, setSearchTerm] = useState("");
-  const { list } = useMealsFind(meals, searchTerm);
-
-  useEffect(() => {
-    dispatch(fetchSearchByName(searchTerm));
-  }, [dispatch, searchTerm]);
-
-  const handleSearchTerm = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
-    dispatch(setSearchTerm(value));
-  };
+  const [filter, setFilter] = useState("");
+  const { list, find } = useMealsFind();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(fetchSearchByName(searchTerm));
+    find(filter);
   };
 
   return (
@@ -32,8 +19,8 @@ function SearchPage() {
       <form className="search-block section-style" onSubmit={handleSubmit}>
         <input
           type="search"
-          value={searchTerm}
-          onChange={handleSearchTerm}
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
           placeholder="Find your Meal"
         />
         <button type="submit">Search</button>
