@@ -2,6 +2,7 @@ import "./page-setting.css";
 
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRandomMeal } from "../store/slices/randomMealSlice";
 import SearchPage from "./SearchPage";
@@ -9,10 +10,11 @@ import SearchPage from "./SearchPage";
 function HomePage() {
   const dispatch = useDispatch();
   const { meals } = useSelector((state) => state.randomMeal);
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(fetchRandomMeal());
-  }, [dispatch]);
+  }, [id, dispatch]);
 
   return (
     <div className="home-page pages">
@@ -21,7 +23,7 @@ function HomePage() {
         <div key={elem.idMeal}>
           <section className="products-wrapper">
             <div className="title-block">
-              <Link className="link" to="/products/{elem.idMeal}">
+              <Link className="link" to={`/products/${elem.idMeal}`}>
                 <h1 className="random-generate__title">{elem.strMeal}</h1>
               </Link>
               <div className="subtitle">

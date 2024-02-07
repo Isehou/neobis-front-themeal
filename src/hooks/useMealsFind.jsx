@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 
-function useMealsFind(meals) {
+function useMealsFind(meals, filter) {
   const [list, setList] = useState(meals);
-  const [filter, setFilter] = useState("");
+
   useEffect(() => {
     setList(
       meals.filter(
-        (e) => typeof e.title === "string" && e.title.includes(filter)
+        (e) =>
+          typeof e.title === "string" &&
+          e.title.toLowerCase().includes(filter.toLowerCase())
       )
     );
   }, [meals, filter]);
 
-  function find(str) {
-    setFilter(str);
-  }
-  return { list, find };
+  return { list };
 }
 
 export default useMealsFind;

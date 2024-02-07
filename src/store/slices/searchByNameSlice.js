@@ -4,8 +4,8 @@ import { SEARCH_MEAL } from "../../services/dataService";
 
 export const fetchSearchByName = createAsyncThunk(
   "searchByName/fetchSearchByName",
-  async () => {
-    const response = await fetch(SEARCH_MEAL);
+  async (searchTerm) => {
+    const response = await fetch(`${SEARCH_MEAL}${searchTerm}`);
     const data = await response.json();
     return data;
   }
@@ -13,6 +13,7 @@ export const fetchSearchByName = createAsyncThunk(
 
 const initialState = {
   meals: [],
+  searchTerm: "",
 };
 
 const searchByNameSlice = createSlice({

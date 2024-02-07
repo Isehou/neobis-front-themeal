@@ -1,13 +1,12 @@
 import "./page-setting.css";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDetailsMeal } from "../store/slices/detailsMealSlice";
-import { useParams } from "react-router-dom";
+
 import { useIngredients } from "../hooks/useIngredients";
 
 function DetailsPage() {
-  const { id } = useParams();
   const dispatch = useDispatch();
   const { meals } = useSelector((state) => state.randomMeal);
 
@@ -15,7 +14,7 @@ function DetailsPage() {
 
   useEffect(() => {
     dispatch(fetchDetailsMeal());
-  }, [id, dispatch]);
+  }, [dispatch]);
 
   useEffect(() => {}, [meals]);
 
@@ -33,7 +32,10 @@ function DetailsPage() {
               </span>
               <ul className="ingredients">
                 {ingredients[elem.idMeal].map((ingredient, index) => (
-                  <li key={ingredient + index}>{ingredient}</li>
+                  <li key={ingredient + index}>
+                    {ingredient}
+                    <p>{}</p>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -44,7 +46,12 @@ function DetailsPage() {
           <div className="instruction">
             <h2 className="static__title">Instruction</h2>
             <div className="meal-description">{elem.strInstructions}</div>
-            <a className="meal-youtube" target="_blank" href={elem.strYoutube}>
+            <a
+              className="meal-youtube"
+              target="_blank"
+              rel="noreferrer"
+              href={elem.strYoutube}
+            >
               Watch on YouTube
             </a>
           </div>

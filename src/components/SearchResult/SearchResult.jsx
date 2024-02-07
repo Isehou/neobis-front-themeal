@@ -4,9 +4,6 @@ function SearchResult({ list }) {
   return (
     <div className="search__item-wrapper">
       {list.map((elem, index) => {
-        {
-          console.log("list:", list);
-        }
         <div>
           <div className="search__item-img-container">
             <img
