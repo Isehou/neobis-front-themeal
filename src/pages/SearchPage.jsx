@@ -25,9 +25,7 @@ function SearchPage() {
         />
         <button type="submit">Search</button>
       </form>
-      <div className="search__result-list">
-        <SearchResult list={list} />
-      </div>
+      <SearchResult list={list} />
     </div>
   );
 }
