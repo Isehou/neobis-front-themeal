@@ -1,13 +1,17 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { RANDOM_MEAL } from "../../services/dataService";
+import { RANDOM_MEAL } from "../../services/api";
 
 export const fetchRandomMeal = createAsyncThunk(
   "randomMeal/fetchRandomMeal",
   async () => {
-    const response = await fetch(RANDOM_MEAL);
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch(RANDOM_MEAL);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 

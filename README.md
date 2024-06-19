@@ -1,25 +1,6 @@
-<h1>neobis-front-themeal</h1>
+<h1>The-Meal</h1>
 
 <h2>Description</h2>
-
-Consolidate the acquired knowledge in React and develop a thematic website for recipes with categories and search. The documentation, functionality, and design of the project can be found below.
-
-<h2>Materials for Study</h2>
-
-          React Basics
-              - Components (+import and export of components),
-              - React DOM and event listeners
-              - props
-          react hooks (what are hooks and what are they for)
-              - useState
-              - useEffect
-        react-router-dom hooks
-              - useParams
-          data exchange between components (props)
-          study the basic life cycle of components:
-              - mount
-              - update (render)
-              - unmount
 
 <h2>Technologies</h2>
 
@@ -35,7 +16,7 @@ Consolidate the acquired knowledge in React and develop a thematic website for r
 
 <h2>Demo</h2>
 
-<h4>Check out the live demo </h4>https://neobis-front-themeal-silk.vercel.app/
+<h4>Check out the live demo </h4>
 
 <h2>Getting Started</h2>
 

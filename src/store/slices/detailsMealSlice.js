@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { DETAILS_MEAL } from "../../services/dataService";
+import { DETAILS_MEAL } from "../../services/api";
 
 export const fetchDetailsMeal = createAsyncThunk(
   "detailsMeal/fetchDetailsMeal",

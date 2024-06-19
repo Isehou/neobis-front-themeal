@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { SEARCH_MEAL } from "../services/dataService";
+import { SEARCH_MEAL } from "../services/api";
 
 function useMealsFind() {
   const [list, setList] = useState([]);
